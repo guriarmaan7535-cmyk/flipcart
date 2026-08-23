@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/*.py": {
-      "includeFiles": ["api/firestore.py"]
+      "includeFiles": "api/firestore.py"
     }
   },
   "rewrites": [
@@ -20,3 +20,4 @@
     }
   ]
 }
+
