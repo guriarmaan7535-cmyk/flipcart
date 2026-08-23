@@ -1,19 +1,22 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/data.py", "use": "@vercel/python", "config": { "includeFiles": "api/_firestore.py" } },
-    { "src": "api/save.py", "use": "@vercel/python", "config": { "includeFiles": "api/_firestore.py" } },
-    { "src": "api/visits.py", "use": "@vercel/python", "config": { "includeFiles": "api/_firestore.py" } },
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "*.png", "use": "@vercel/static" },
-    { "src": "*.webp", "use": "@vercel/static" },
-    { "src": "css/**", "use": "@vercel/static" },
-    { "src": "js/**", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/api/data", "dest": "/api/data.py" },
-    { "src": "/api/save", "dest": "/api/save.py" },
-    { "src": "/api/visits", "dest": "/api/visits.py" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "functions": {
+    "api/*.py": {
+      "includeFiles": ["api/firestore.py"]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/data",
+      "destination": "/api/data.py"
+    },
+    {
+      "source": "/api/save",
+      "destination": "/api/save.py"
+    },
+    {
+      "source": "/api/visits",
+      "destination": "/api/visits.py"
+    }
   ]
 }
